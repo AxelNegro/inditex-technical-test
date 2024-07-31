@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: inditex-test
+  description: API made for the Inditex technical test.
+  termsOfService: ''
+  contact:
+    name: Axel Negro Perez
+    url: www.linkedin.com/in/axel-negro-perez
+    email: negroperezaxel@gmail.com
+servers:
+  - url: 'http://localhost:8080'
+    description: Localhost
+paths:
+  '/brands/{brand_id}/products/{product_id}/prices':
+    get:
+      tags:
+        - Prices
+      summary: Get product price of the brand by date
+      description: Endpoint in charge of getting the product price of the brand by date.
+      operationId: get-brands-brand_id-products-product_id-prices
+      parameters:
+        - name: application_date
+          in: query
+          description: Date of application to get the price of the product for that date.
+          required: true
+          schema:
+            type: string
+            format: date-time
+            pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T([0-9]{2}:){2}[0-9]{2}'
+        - name: brand_id
+          in: path
+          description: Id of the brand.
+          required: true
+          schema:
+            type: number
+        - name: product_id
+          in: path
+          description: Id of the product.
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPricesResponse'
+      servers:
+        - url: 'http://localhost:8080'
+          description: Localhost
+tags:
+  - name: Prices
+    description: Tag used for the prices-related endpoints.
+components:
+  responses:
+    GetPricesResponse:
+      description: 'Price for the GET - /brands/{brand_id}/products/{product_id}/prices endpoint.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Price'
+  schemas:
+    Price:
+      type: object
+      title: Price
+      description: Model for the price
+      properties:
+        id:
+          type: integer
+          description: Id of the price.
+        product_id:
+          type: integer
+          description: Id of the product.
+        brand_id:
+          type: integer
+          description: Id of the brand.
+        start_date:
+          type: string
+          description: Starting date of the price application.
+          format: date-time
+          pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T([0-9]{2}:){2}[0-9]{2}'
+        end_date:
+          type: string
+          description: End date of the price application.
+          format: date-time
+          pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T([0-9]{2}:){2}[0-9]{2}'
+        price:
+          type: number
+          description: Price of the product to apply
+          format: double
