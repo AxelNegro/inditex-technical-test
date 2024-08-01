@@ -12,7 +12,7 @@ After cloning the repository, you should execute the following command:
 With this, maven will generate all the necessary sources and execute the tests.
 Once finished executing the tests, the project it's ready to run.
 
-##Troubleshooting
+## Troubleshooting
 
 _The IDE throw errors when cloning the project_
 - Ignore them, it's only the first time opening the project.
