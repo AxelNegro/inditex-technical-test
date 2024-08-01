@@ -17,6 +17,6 @@ Once finished executing the tests, the project it's ready to run.
 _The IDE throw errors when cloning the project_
 - Ignore them, it's only the first time opening the project.
 
-_I cannot run the project because Java Cannot find the auto generated classes_
+_I cannot run the project because Java cannot find the auto generated classes_
 - If using IntelliJ IDEA, go to File > Invalidate Caches > Invalidate and Restart.
   If using Eclipse, Window > Preferences > Remote Systems > File Cache > Clear Cached Files > Apply > OK
