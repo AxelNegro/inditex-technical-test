@@ -28,7 +28,7 @@ public class PricesServiceImpl implements PricesService {
         Price finalPrice = null;
 
         for (Price p : prices) {
-            if(finalPrice == null || finalPrice.getPriority() > p.getPriority())
+            if(finalPrice == null || finalPrice.getPriority() < p.getPriority())
                 finalPrice = p;
         }
 
