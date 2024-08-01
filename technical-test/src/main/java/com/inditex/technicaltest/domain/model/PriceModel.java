@@ -1,10 +1,5 @@
 package com.inditex.technicaltest.domain.model;
 
-import com.inditex.technicaltest.infraestructure.repository.entity.BrandEntity;
-import com.inditex.technicaltest.infraestructure.repository.entity.ProductEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -14,7 +9,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class Price {
+public class PriceModel {
     private Long id;
     private Long productId;
     private Long brandId;

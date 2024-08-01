@@ -1,6 +1,6 @@
 package com.inditex.technicaltest.common.enums;
 
-import com.inditex.technicaltest.infraestructure.controller.dto.MessageDto;
+import com.inditex.technicaltest.infrastructure.controller.dto.MessageDto;
 import lombok.Getter;
 
 @Getter

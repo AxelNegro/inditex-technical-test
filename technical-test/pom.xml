@@ -133,8 +133,8 @@
 						<configuration>
 							<inputSpec>${project.basedir}/src/main/resources/inditex-test.yaml</inputSpec>
 							<generatorName>spring</generatorName>
-							<apiPackage>com.inditex.technicaltest.infraestructure.controller</apiPackage>
-							<modelPackage>com.inditex.technicaltest.infraestructure.controller.dto</modelPackage>
+							<apiPackage>com.inditex.technicaltest.infrastructure.controller</apiPackage>
+							<modelPackage>com.inditex.technicaltest.infrastructure.controller.dto</modelPackage>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<modelNameSuffix>Dto</modelNameSuffix>
 							<configOptions>

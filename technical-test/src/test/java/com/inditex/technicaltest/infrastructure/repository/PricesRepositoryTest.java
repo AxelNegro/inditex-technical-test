@@ -1,8 +1,8 @@
-package com.inditex.technicaltest.infraestructure.repository;
+package com.inditex.technicaltest.infrastructure.repository;
 
-import com.inditex.technicaltest.infraestructure.repository.entity.BrandEntity;
-import com.inditex.technicaltest.infraestructure.repository.entity.PriceEntity;
-import com.inditex.technicaltest.infraestructure.repository.entity.ProductEntity;
+import com.inditex.technicaltest.infrastructure.repository.entity.BrandEntity;
+import com.inditex.technicaltest.infrastructure.repository.entity.PriceEntity;
+import com.inditex.technicaltest.infrastructure.repository.entity.ProductEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ActiveProfiles("test")
-public class PricesRepositoryTest {
+class PricesRepositoryTest {
     @Autowired
     private BrandsRepository brandsRepository;
     @Autowired

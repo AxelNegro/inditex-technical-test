@@ -1,9 +1,7 @@
-package com.inditex.technicaltest.infraestructure.repository.entity;
+package com.inditex.technicaltest.infrastructure.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -11,8 +9,8 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "BRANDS")
-public class BrandEntity {
+@Table(name = "PRODUCTS")
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

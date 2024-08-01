@@ -1,4 +1,4 @@
-package com.inditex.technicaltest.infraestructure.repository.entity;
+package com.inditex.technicaltest.infrastructure.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
