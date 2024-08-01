@@ -3,13 +3,16 @@ package com.inditex.technicaltest.infrastructure.controller;
 import com.inditex.technicaltest.common.BaseTestAnnotation;
 import com.inditex.technicaltest.domain.model.PriceModel;
 import com.inditex.technicaltest.domain.port.in.PricesService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
 
@@ -21,12 +24,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @BaseTestAnnotation
-@AutoConfigureMockMvc
+@WebAppConfiguration
 class BrandsControllerTest {
-    @Autowired
     private MockMvc mvc;
+    @Autowired
+    private WebApplicationContext webApplicationContext;
     @MockBean
     private PricesService pricesService;
+
+    @BeforeEach
+    public void setup() {
+        this.mvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+    }
 
     @Test
     void Given_HappyPath_When_GetBrandsBrandIdProductsProductIdPrices_Then_Success() throws Exception {
