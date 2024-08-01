@@ -9,7 +9,7 @@ info:
     url: https://www.linkedin.com/in/axel-negro-perez
     email: negroperezaxel@gmail.com
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8080/inditex/api/'
     description: Localhost
 paths:
   '/brands/{brand_id}/products/{product_id}/prices':
@@ -20,6 +20,20 @@ paths:
       description: Endpoint in charge of getting the product price of the brand by date.
       operationId: get-brands-brand_id-products-product_id-prices
       parameters:
+        - name: brand_id
+          in: path
+          description: Id of the brand.
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: product_id
+          in: path
+          description: Id of the product.
+          required: true
+          schema:
+            type: integer
+            format: int64
         - name: application_date
           in: query
           description: Date of application to get the price of the product for that date.
@@ -28,18 +42,6 @@ paths:
             type: string
             format: date-time
             pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T([0-9]{2}:){2}[0-9]{2}'
-        - name: brand_id
-          in: path
-          description: Id of the brand.
-          required: true
-          schema:
-            type: number
-        - name: product_id
-          in: path
-          description: Id of the product.
-          required: true
-          schema:
-            type: number
       responses:
         '200':
           $ref: '#/components/responses/GetPrices200Response'
@@ -70,7 +72,7 @@ components:
           examples:
             Example:
               value:
-                code: INDITEX-500-ERROR
+                code: INDITEX-ERROR-00500
                 message: Something has gone wrong.
     GetPrices400Response:
       description: 'Response used for the 400 responses in GET - /brands/{brand_id}/products/{product_id}/prices endpoint.'
@@ -81,8 +83,8 @@ components:
           examples:
             Example 1:
               value:
-                code: INDITEX-400-ERROR
-                message: The input parameters are invalid.
+                code: INDITEX-ERROR-00400
+                message: Bad request.
   schemas:
     Price:
       type: object
@@ -92,12 +94,15 @@ components:
         id:
           type: integer
           description: Id of the price.
+          format: int64
         product_id:
           type: integer
           description: Id of the product.
+          format: int64
         brand_id:
           type: integer
           description: Id of the brand.
+          format: int64
         start_date:
           type: string
           description: Starting date of the price application.
