@@ -9,7 +9,7 @@ info:
     url: https://www.linkedin.com/in/axel-negro-perez
     email: negroperezaxel@gmail.com
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8080/inditex/api/'
     description: Localhost
 paths:
   '/brands/{brand_id}/products/{product_id}/prices':
