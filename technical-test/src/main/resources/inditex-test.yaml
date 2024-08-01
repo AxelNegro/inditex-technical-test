@@ -70,7 +70,7 @@ components:
           examples:
             Example:
               value:
-                code: INDITEX-500-ERROR
+                code: INDITEX-ERROR-00500
                 message: Something has gone wrong.
     GetPrices400Response:
       description: 'Response used for the 400 responses in GET - /brands/{brand_id}/products/{product_id}/prices endpoint.'
@@ -81,8 +81,8 @@ components:
           examples:
             Example 1:
               value:
-                code: INDITEX-400-ERROR
-                message: The input parameters are invalid.
+                code: INDITEX-ERROR-00400
+                message: Bad request.
   schemas:
     Price:
       type: object

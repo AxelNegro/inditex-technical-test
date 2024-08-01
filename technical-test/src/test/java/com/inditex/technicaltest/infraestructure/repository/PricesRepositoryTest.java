@@ -1,6 +1,5 @@
 package com.inditex.technicaltest.infraestructure.repository;
 
-import com.inditex.technicaltest.infraestructure.repository.PricesRepository;
 import com.inditex.technicaltest.infraestructure.repository.entity.BrandEntity;
 import com.inditex.technicaltest.infraestructure.repository.entity.PriceEntity;
 import com.inditex.technicaltest.infraestructure.repository.entity.ProductEntity;
@@ -25,13 +24,13 @@ public class PricesRepositoryTest {
     private PricesRepository pricesRepository;
 
     @Test
-    void Given_HappyPath_When_FindByProductIdAndBrandId_Then_Success(){
+    void Given_HappyPath_When_FindByProductIdBrandIdAndApplicationDate_Then_Success(){
         BrandEntity brandEntity = brandsRepository.save(getBrandEntity());
         ProductEntity productEntity = productRepository.save(getProductEntity());
 
         pricesRepository.save(getPriceEntity(productEntity, brandEntity));
 
-        List<PriceEntity> prices = pricesRepository.findByProductIdAndBrandId(productEntity.getId(), brandEntity.getId());
+        List<PriceEntity> prices = pricesRepository.findByProductIdBrandIdAndApplicationDate(productEntity.getId(), brandEntity.getId(), LocalDateTime.of(2022, 6, 15, 6, 0, 0));
 
         assertThat(prices).isNotEmpty();
     }

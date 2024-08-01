@@ -19,6 +19,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -32,9 +34,9 @@ public class PricesRepoTest {
 
     @Test
     void Given_RepositoryReturnEmpty_When_FindByProductIdAndBrandId_Then_ReturnEmpty(){
-        when(pricesRepository.findByProductIdAndBrandId(1L, 1L)).thenReturn(new ArrayList<>());
+        when(pricesRepository.findByProductIdBrandIdAndApplicationDate(anyLong(), anyLong(), any(LocalDateTime.class))).thenReturn(new ArrayList<>());
 
-        List<Price> actual = pricesRepo.findByProductIdAndBrandId(1L, 1L);
+        List<Price> actual = pricesRepo.findByProductIdBrandIdAndApplicationDate(1L, 1L, LocalDateTime.now());
 
         assertThat(actual).isEmpty();
     }
@@ -44,9 +46,9 @@ public class PricesRepoTest {
         PriceEntity priceEntity = getPriceEntity();
         Price expected = getPrice();
 
-        when(pricesRepository.findByProductIdAndBrandId(1L, 1L)).thenReturn(List.of(priceEntity));
+        when(pricesRepository.findByProductIdBrandIdAndApplicationDate(anyLong(), anyLong(), any(LocalDateTime.class))).thenReturn(List.of(priceEntity));
 
-        Price actual = pricesRepo.findByProductIdAndBrandId(1L, 1L).stream().findFirst().orElse(null);
+        Price actual = pricesRepo.findByProductIdBrandIdAndApplicationDate(1L, 1L, LocalDateTime.now()).stream().findFirst().orElse(null);
 
         assertThat(actual).isNotNull();
         assertEquals(expected, actual);
