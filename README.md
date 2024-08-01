@@ -6,11 +6,15 @@ Repository made for the Inditex technical test.
 - Maven 3.9.5
 
 ## How to run tests and start
-After cloning the repository, you should execute the following command: 
-`mvn clean install`
+After cloning the repository, you should:
+1. Execute maven sync.
+2. Enable Lombok Annotation Processing
+3. Execute the following command `mvn clean install`
 
 With this, maven will generate all the necessary sources and execute the tests.
 Once finished executing the tests, the project it's ready to run.
+
+To run it, just start it from the main class `TechnicalTestApplication.java`
 
 ## Troubleshooting
 
