@@ -92,12 +92,15 @@ components:
         id:
           type: integer
           description: Id of the price.
+          format: int64
         product_id:
           type: integer
           description: Id of the product.
+          format: int64
         brand_id:
           type: integer
           description: Id of the brand.
+          format: int64
         start_date:
           type: string
           description: Starting date of the price application.
