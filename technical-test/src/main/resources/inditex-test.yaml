@@ -6,7 +6,7 @@ info:
   termsOfService: ''
   contact:
     name: Axel Negro Perez
-    url: www.linkedin.com/in/axel-negro-perez
+    url: https://www.linkedin.com/in/axel-negro-perez
     email: negroperezaxel@gmail.com
 servers:
   - url: 'http://localhost:8080'
@@ -42,7 +42,11 @@ paths:
             type: number
       responses:
         '200':
-          $ref: '#/components/responses/GetPricesResponse'
+          $ref: '#/components/responses/GetPrices200Response'
+        '400':
+          $ref: '#/components/responses/GetPrices400Response'
+        '500':
+          $ref: '#/components/responses/GetPrices500Response'
       servers:
         - url: 'http://localhost:8080'
           description: Localhost
@@ -51,12 +55,34 @@ tags:
     description: Tag used for the prices-related endpoints.
 components:
   responses:
-    GetPricesResponse:
+    GetPrices200Response:
       description: 'Price for the GET - /brands/{brand_id}/products/{product_id}/prices endpoint.'
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Price'
+    GetPrices500Response:
+      description: 'Response used for the 500 responses in GET - /brands/{brand_id}/products/{product_id}/prices endpoint.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+          examples:
+            Example:
+              value:
+                code: INDITEX-500-ERROR
+                message: Something has gone wrong.
+    GetPrices400Response:
+      description: 'Response used for the 400 responses in GET - /brands/{brand_id}/products/{product_id}/prices endpoint.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+          examples:
+            Example 1:
+              value:
+                code: INDITEX-400-ERROR
+                message: The input parameters are invalid.
   schemas:
     Price:
       type: object
@@ -86,3 +112,12 @@ components:
           type: number
           description: Price of the product to apply
           format: double
+    Message:
+      type: object
+      title: Message
+      description: Model for the message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
