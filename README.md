@@ -25,3 +25,9 @@ _I cannot run the project because Java cannot find the auto generated classes_
 - If using:
 	- IntelliJ IDEA: Go to File > Invalidate Caches > Invalidate and Restart.
 	- Eclipse: Window > Preferences > Remote Systems > File Cache > Clear Cached Files > Apply > OK.
+	
+## Use example
+
+Below, there's a curl to test this API:
+
+`curl --location 'http://localhost:8080/inditex/api/brands/1/products/35455/prices?application_date=2020-06-14T10%3A00%3A00'`
