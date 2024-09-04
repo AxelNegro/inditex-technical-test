@@ -1,4 +1,4 @@
-package com.inditex.technicaltest.common.enums;
+package com.inditex.technicaltest.domain.common.enums;
 
 import com.inditex.technicaltest.infrastructure.controller.dto.MessageDto;
 import lombok.Getter;

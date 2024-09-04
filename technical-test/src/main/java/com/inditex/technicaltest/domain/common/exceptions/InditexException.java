@@ -1,4 +1,4 @@
-package com.inditex.technicaltest.common.exceptions;
+package com.inditex.technicaltest.domain.common.exceptions;
 
 import com.inditex.technicaltest.infrastructure.controller.dto.MessageDto;
 import lombok.Getter;
