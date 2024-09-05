@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static com.inditex.technicaltest.common.enums.InditexExceptionsEnum.ERROR_701_EMPTY_PRICES;
+import static com.inditex.technicaltest.domain.common.enums.InditexExceptionsEnum.ERROR_701_EMPTY_PRICES;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

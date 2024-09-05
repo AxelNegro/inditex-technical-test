@@ -1,6 +1,6 @@
 package com.inditex.technicaltest.infrastructure.controller;
 
-import com.inditex.technicaltest.common.exceptions.InditexException;
+import com.inditex.technicaltest.domain.common.exceptions.InditexException;
 import com.inditex.technicaltest.infrastructure.controller.dto.MessageDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -12,8 +12,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static com.inditex.technicaltest.common.enums.InditexExceptionsEnum.ERROR_400_BAD_REQUEST;
-import static com.inditex.technicaltest.common.enums.InditexExceptionsEnum.ERROR_500_SERVER_ERROR;
+import static com.inditex.technicaltest.domain.common.enums.InditexExceptionsEnum.ERROR_400_BAD_REQUEST;
+import static com.inditex.technicaltest.domain.common.enums.InditexExceptionsEnum.ERROR_500_SERVER_ERROR;
 
 @ControllerAdvice
 @Slf4j

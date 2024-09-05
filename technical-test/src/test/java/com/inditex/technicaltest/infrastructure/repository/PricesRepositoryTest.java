@@ -7,32 +7,29 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ActiveProfiles("test")
+@Sql("/init.sql")
 class PricesRepositoryTest {
-    @Autowired
-    private BrandsRepository brandsRepository;
-    @Autowired
-    private ProductsRepository productRepository;
     @Autowired
     private PricesRepository pricesRepository;
 
     @Test
     void Given_HappyPath_When_FindByProductIdBrandIdAndApplicationDate_Then_Success(){
-        BrandEntity brandEntity = brandsRepository.save(getBrandEntity());
-        ProductEntity productEntity = productRepository.save(getProductEntity());
+        BrandEntity brandEntity = getBrandEntity();
+        ProductEntity productEntity = getProductEntity();
 
         pricesRepository.save(getPriceEntity(productEntity, brandEntity));
 
-        List<PriceEntity> prices = pricesRepository.findByProductIdBrandIdAndApplicationDate(productEntity.getId(), brandEntity.getId(), LocalDateTime.of(2022, 6, 15, 6, 0, 0));
+        PriceEntity prices = pricesRepository.findByProductIdBrandIdAndApplicationDate(productEntity.getId(), brandEntity.getId(), LocalDateTime.of(2022, 6, 15, 6, 0, 0));
 
-        assertThat(prices).isNotEmpty();
+        assertThat(prices).isNotNull();
     }
 
     private PriceEntity getPriceEntity(ProductEntity productEntity, BrandEntity brandEntity) {
@@ -51,7 +48,7 @@ class PricesRepositoryTest {
     }
 
     private ProductEntity getProductEntity() {
-        return new ProductEntity(1L, "SHOES");
+        return new ProductEntity(35455L, "SHOES");
     }
 
 
