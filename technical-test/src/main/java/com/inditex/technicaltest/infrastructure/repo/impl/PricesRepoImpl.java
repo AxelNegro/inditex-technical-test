@@ -1,4 +1,4 @@
-package com.inditex.technicaltest.domain.port.out.impl;
+package com.inditex.technicaltest.infrastructure.repo.impl;
 
 import com.inditex.technicaltest.domain.model.PriceModel;
 import com.inditex.technicaltest.domain.model.mapper.PriceDomainMapper;
@@ -9,7 +9,6 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -18,9 +17,7 @@ public class PricesRepoImpl implements PricesRepo {
     private final PriceDomainMapper mapper = Mappers.getMapper(PriceDomainMapper.class);
 
     @Override
-    public List<PriceModel> findByProductIdBrandIdAndApplicationDate(Long productId, Long brandId, LocalDateTime applicationDate) {
-        return pricesRepository.findByProductIdBrandIdAndApplicationDate(productId, brandId, applicationDate)
-                .stream().map(mapper::convert)
-                .toList();
+    public PriceModel findByProductIdBrandIdAndApplicationDate(Long productId, Long brandId, LocalDateTime applicationDate) {
+        return mapper.convert(pricesRepository.findByProductIdBrandIdAndApplicationDate(productId, brandId, applicationDate));
     }
 }

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.inditex</groupId>
 	<artifactId>technical-test</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<name>technical-test</name>
 	<description>Project made for the Inditex technical test.</description>
 	<url/>
@@ -28,8 +28,15 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<maven.version>3.8.0</maven.version>
 		<spring.version>3.3.2</spring.version>
+		<h2.version>2.3.230</h2.version>
+		<lombok.version>1.18.34</lombok.version>
+		<lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
+		<jakarta.version>3.1.0</jakarta.version>
+		<swagger.version>2.2.22</swagger.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+		<openapi.version>7.7.0</openapi.version>
 		<io.cucumber.version>7.18.1</io.cucumber.version>
 	</properties>
 	<dependencies>
@@ -52,24 +59,24 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>2.3.230</version>
+			<version>${h2.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.34</version>
+			<version>${lombok.version}</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
-			<version>3.1.0</version>
+			<version>${jakarta.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
 			<artifactId>swagger-annotations</artifactId>
-			<version>2.2.22</version>
+			<version>${swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -82,16 +89,33 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${io.cucumber.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>${io.cucumber.version}</version>
+			<artifactId>cucumber-junit-platform-engine</artifactId>
+			<version>7.18.1</version>
+			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<version>1.11.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.11.0</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
@@ -117,7 +141,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>${maven.version}</version>
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
@@ -133,7 +157,7 @@
 						<dependency>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-mapstruct-binding</artifactId>
-							<version>0.2.0</version>
+							<version>${lombok.mapstruct.binding.version}</version>
 						</dependency>
 					</annotationProcessorPaths>
 					<compilerArgs>
@@ -146,7 +170,7 @@
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>7.7.0</version>
+				<version>${openapi.version}</version>
 				<executions>
 					<execution>
 						<id>spring-boot-api</id>
@@ -173,6 +197,11 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.0</version>
 			</plugin>
 		</plugins>
 	</build>

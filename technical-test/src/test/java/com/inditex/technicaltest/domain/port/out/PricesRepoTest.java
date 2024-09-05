@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,12 +28,12 @@ class PricesRepoTest {
     private PricesRepository pricesRepository;
 
     @Test
-    void Given_RepositoryReturnEmpty_When_FindByProductIdAndBrandId_Then_ReturnEmpty(){
-        when(pricesRepository.findByProductIdBrandIdAndApplicationDate(anyLong(), anyLong(), any(LocalDateTime.class))).thenReturn(new ArrayList<>());
+    void Given_RepositoryReturnNull_When_FindByProductIdAndBrandId_Then_ReturnEmpty(){
+        when(pricesRepository.findByProductIdBrandIdAndApplicationDate(anyLong(), anyLong(), any(LocalDateTime.class))).thenReturn(null);
 
-        List<PriceModel> actual = pricesRepo.findByProductIdBrandIdAndApplicationDate(1L, 1L, LocalDateTime.now());
+        PriceModel actual = pricesRepo.findByProductIdBrandIdAndApplicationDate(1L, 1L, LocalDateTime.now());
 
-        assertThat(actual).isEmpty();
+        assertThat(actual).isNull();
     }
 
     @Test
@@ -43,9 +41,9 @@ class PricesRepoTest {
         PriceEntity priceEntity = getPriceEntity();
         PriceModel expected = getPrice();
 
-        when(pricesRepository.findByProductIdBrandIdAndApplicationDate(anyLong(), anyLong(), any(LocalDateTime.class))).thenReturn(List.of(priceEntity));
+        when(pricesRepository.findByProductIdBrandIdAndApplicationDate(anyLong(), anyLong(), any(LocalDateTime.class))).thenReturn(priceEntity);
 
-        PriceModel actual = pricesRepo.findByProductIdBrandIdAndApplicationDate(1L, 1L, LocalDateTime.now()).stream().findFirst().orElse(null);
+        PriceModel actual = pricesRepo.findByProductIdBrandIdAndApplicationDate(1L, 1L, LocalDateTime.now());
 
         assertThat(actual).isNotNull();
         assertEquals(expected, actual);
