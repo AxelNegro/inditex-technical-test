@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "e039611f-0769-4e97-9cb5-e222affbe4f4",
+		"name": "Inditex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19593504"
+	},
+	"item": [
+		{
+			"name": "Get price by brand, product and application date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/inditex/api/brands/1/products/35455/prices?application_date=2020-06-14T10:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inditex",
+						"api",
+						"brands",
+						"1",
+						"products",
+						"35455",
+						"prices"
+					],
+					"query": [
+						{
+							"key": "application_date",
+							"value": "2020-06-14T10:00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

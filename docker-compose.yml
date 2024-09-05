@@ -1,0 +1,11 @@
+version: '3'
+services:
+  inditex-app:
+    environment: 
+      - DB_USERNAME=inditex-db
+      - DB_PASSWORD=admin
+    build: ./technical-test
+    ports:
+      - "8080:8080"
+       
+  

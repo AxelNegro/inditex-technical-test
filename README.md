@@ -16,6 +16,11 @@ Once finished executing the tests, the project it's ready to run.
 
 To run it, just start it from the main class `TechnicalTestApplication.java`.
 
+## Dockerize API
+To dockerize the API, you should:
+1. Step on the source folder.
+2. Execute `docker compose up`
+
 ## Troubleshooting
 
 _The IDE throw errors when cloning the project_
@@ -31,3 +36,5 @@ _I cannot run the project because Java cannot find the auto generated classes_
 Below, there's a curl to test this API:
 
 `curl --location 'http://localhost:8080/inditex/api/brands/1/products/35455/prices?application_date=2020-06-14T10%3A00%3A00'`
+
+Also, there's a Postman collection ready to import and use.
