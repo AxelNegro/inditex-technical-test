@@ -1,23 +1,11 @@
 package com.inditex.technicaltest.infrastructure.controller.e2e.steps;
 
-import com.inditex.technicaltest.TechnicalTestApplication;
 import com.inditex.technicaltest.infrastructure.controller.dto.PriceDto;
 import com.inditex.technicaltest.infrastructure.controller.e2e.CucumberSpringConfiguration;
-import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Then;
 import io.cucumber.spring.CucumberContextConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.test.context.ContextConfiguration;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
