@@ -38,6 +38,8 @@
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 		<openapi.version>7.7.0</openapi.version>
 		<io.cucumber.version>7.18.1</io.cucumber.version>
+		<org.junit.platform.version>1.11.0</org.junit.platform.version>
+		<org.junit.jupiter.version>5.11.0</org.junit.jupiter.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -83,44 +85,44 @@
 			<artifactId>mapstruct</artifactId>
 			<version>${org.mapstruct.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${io.cucumber.version}</version>
+			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>7.18.1</version>
+			<version>${io.cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<version>${io.cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-suite</artifactId>
-			<version>1.11.0</version>
+			<version>${org.junit.platform.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.11.0</version>
+			<version>${org.junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-spring</artifactId>
-			<version>${io.cucumber.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>
