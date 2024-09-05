@@ -1,14 +1,17 @@
 package com.inditex.technicaltest.infrastructure.controller.e2e;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.runner.RunWith;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        plugin = {"pretty", "json:target/cucumber.json"},
-        features = "classpath:features",
-        extraGlue = "com.inditex.technicaltest.infrastructure.controller.e2e"
-)
+import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.inditex.technicaltest.infrastructure.controller.e2e.steps,com.inditex.technicaltest.infrastructure.controller.e2e.hooks")
 public class CucumberRunnerTest {
 }
